@@ -4,6 +4,7 @@
     "license": "LGPL-3.0-only",
     "require": {
         "php": ">=7.2",
+        "ext-json": "*",
         "ext-mbstring": "*",
         "ext-simplexml": "*",
         "guzzlehttp/guzzle": "6.3.*|6.5.*",
