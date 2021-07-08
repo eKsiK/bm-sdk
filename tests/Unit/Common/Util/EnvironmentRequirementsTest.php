@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Tests\Unit\Common\Helper;
+namespace Tests\Unit\Common\Util;
 
 use BlueMedia\Common\Exception\EnviromentRequirementException;
 use BlueMedia\Common\Util\EnvironmentRequirements;
