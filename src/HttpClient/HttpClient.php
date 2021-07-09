@@ -4,21 +4,18 @@ declare(strict_types=1);
 namespace BlueMedia\HttpClient;
 
 use BlueMedia\Common\Dto\AbstractDto;
-use GuzzleHttp\Client;
-use GuzzleHttp\RequestOptions;
 use Psr\Http\Message\ResponseInterface;
 
 class HttpClient implements HttpClientInterface
 {
-    private $client;
+    /**
+     * @var Builder
+     */
+    private $httpClientBuilder;
 
-    public function __construct()
+    public function __construct(Builder $httpClientBuilder = null)
     {
-        $this->client = new Client([
-            RequestOptions::ALLOW_REDIRECTS => false,
-            RequestOptions::HTTP_ERRORS => false,
-            RequestOptions::VERIFY => true
-        ]);
+        $this->httpClientBuilder = $httpClientBuilder ?? new Builder();
     }
 
     /**
@@ -30,11 +27,10 @@ class HttpClient implements HttpClientInterface
      */
     public function post(AbstractDto $requestDto): ResponseInterface
     {
-        $options = [
-            RequestOptions::HEADERS => $requestDto->getRequest()->getRequestHeaders(),
-            RequestOptions::FORM_PARAMS => $requestDto->getRequestData()->capitalizedArray(),
-        ];
-
-        return $this->client->post($requestDto->getRequest()->getRequestUrl(), $options);
+        return $this->httpClientBuilder->getHttpClient()->post(
+            $requestDto->getRequest()->getRequestUrl(),
+            $requestDto->getRequest()->getRequestHeaders(),
+            http_build_query($requestDto->getRequestData()->capitalizedArray())
+        );
     }
 }
