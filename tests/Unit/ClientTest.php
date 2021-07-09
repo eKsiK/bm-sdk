@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Tests\Unit;
@@ -170,6 +171,7 @@ final class ClientTest extends BaseTestCase
 
     /**
      * @dataProvider itnProvider
+     *
      * @param string $itn
      */
     public function testDoItnInThrowsExceptionOnWrongBase64($itn): void
@@ -227,8 +229,6 @@ final class ClientTest extends BaseTestCase
 
     /**
      * @dataProvider checkHashProvider
-     * @param string $hash
-     * @param bool $value
      */
     public function testCheckHashReturnsExpectedValue(string $hash, bool $value): void
     {
@@ -259,7 +259,7 @@ final class ClientTest extends BaseTestCase
     private function getHttpClient(callable $requestMatcher = null): Client
     {
         $mockClient = new \Http\Mock\Client();
-        if ($requestMatcher !== null) {
+        if (null !== $requestMatcher) {
             $mockClient = $requestMatcher($mockClient);
         }
 
@@ -279,7 +279,7 @@ final class ClientTest extends BaseTestCase
     {
         return [
             ['56507c9294e43e649e8726d271174297a165aedb858edb0414aadbc9632f17e7', true],
-            ['56507c9294e43e649e8726d271174297a165aedb858edb0414aadbc9632f1111', false]
+            ['56507c9294e43e649e8726d271174297a165aedb858edb0414aadbc9632f1111', false],
         ];
     }
 
@@ -288,7 +288,7 @@ final class ClientTest extends BaseTestCase
         return [
             ['PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiP'],
             ['nope'],
-            ['']
+            [''],
         ];
     }
 
@@ -299,17 +299,17 @@ final class ClientTest extends BaseTestCase
                 [
                     'ServiceID' => parent::SERVICE_ID,
                     'OrderID' => '123',
-                    'Hash' => 'df5f737f48bcef93361f590b460cc633b28f91710a60415527221f9cb90da52a'
+                    'Hash' => 'df5f737f48bcef93361f590b460cc633b28f91710a60415527221f9cb90da52a',
                 ],
-                true
+                true,
             ],
             [
                 [
                     'ServiceID' => parent::SERVICE_ID,
                     'OrderID' => '123',
-                    'Hash' => 'cd4dd0eed6bfeb1fd0605076caf7b7774624af7cb67cd63b97425c26471d8100'
+                    'Hash' => 'cd4dd0eed6bfeb1fd0605076caf7b7774624af7cb67cd63b97425c26471d8100',
                 ],
-                false
+                false,
             ],
         ];
     }

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Tests\Unit\Common\Util;
@@ -19,7 +20,6 @@ class XMLParserTest extends TestCase
     }
 
     /**
-     * @param string $wrongXml
      * @dataProvider wrongXmlProvider
      */
     public function testParseThrowsErrorOnWrongXml(string $wrongXml): void
@@ -35,7 +35,7 @@ class XMLParserTest extends TestCase
             ['ERROR'],
             [''],
             ['wrong_xml'],
-            ['<?xml version="1.0" encoding="UTF-8"?>']
+            ['<?xml version="1.0" encoding="UTF-8"?>'],
         ];
     }
 }

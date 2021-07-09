@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace BlueMedia\Itn\ValueObject;
@@ -74,7 +75,7 @@ final class Itn extends AbstractValueObject implements SerializableInterface
     protected $gatewayID;
 
     /**
-     * Payment date. YYYYMMDDhhmmss
+     * Payment date. YYYYMMDDhhmmss.
      *
      * @var string
      * @Type("string")
@@ -105,10 +106,6 @@ final class Itn extends AbstractValueObject implements SerializableInterface
      */
     protected $hash;
 
-    /**
-     * @param string $serviceID
-     * @return Itn
-     */
     public function setServiceID(string $serviceID): Itn
     {
         $this->serviceID = $serviceID;
@@ -116,10 +113,6 @@ final class Itn extends AbstractValueObject implements SerializableInterface
         return $this;
     }
 
-    /**
-     * @param string $hash
-     * @return Itn
-     */
     public function setHash(string $hash): Itn
     {
         $this->hash = $hash;
@@ -127,65 +120,41 @@ final class Itn extends AbstractValueObject implements SerializableInterface
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getHash(): string
     {
         return trim($this->hash);
     }
 
-    /**
-     * @return string
-     */
     public function getOrderID(): string
     {
         return $this->orderID;
     }
 
-    /**
-     * @return string
-     */
     public function getRemoteID(): string
     {
         return $this->remoteID;
     }
 
-    /**
-     * @return string
-     */
     public function getAmount(): string
     {
         return $this->amount;
     }
 
-    /**
-     * @return string
-     */
     public function getCurrency(): string
     {
         return $this->currency;
     }
 
-    /**
-     * @return string
-     */
     public function getPaymentDate(): string
     {
         return $this->paymentDate;
     }
 
-    /**
-     * @return string
-     */
     public function getPaymentStatus(): string
     {
         return $this->paymentStatus;
     }
 
-    /**
-     * @return string
-     */
     public function getPaymentStatusDetails(): string
     {
         return $this->paymentStatusDetails;

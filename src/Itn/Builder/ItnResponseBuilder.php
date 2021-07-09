@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace BlueMedia\Itn\Builder;
@@ -19,7 +20,7 @@ final class ItnResponseBuilder
         $hashData = [
             'serviceID' => $configuration->getServiceId(),
             'orderID' => $itn->getOrderId(),
-            'confirmation' => $confirmation
+            'confirmation' => $confirmation,
         ];
 
         $itnResponseData = [
@@ -27,10 +28,10 @@ final class ItnResponseBuilder
             'transactionsConfirmations' => [
                 'transactionConfirmed' => [
                     'orderID' => $itn->getOrderId(),
-                    'confirmation' => $confirmation
+                    'confirmation' => $confirmation,
                 ],
             ],
-            'hash' => HashGenerator::generateHash($hashData, $configuration)
+            'hash' => HashGenerator::generateHash($hashData, $configuration),
         ];
 
         $serializer = new Serializer();

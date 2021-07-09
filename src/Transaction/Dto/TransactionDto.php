@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace BlueMedia\Transaction\Dto;
@@ -23,24 +24,17 @@ final class TransactionDto extends AbstractDto implements TransactionDtoInterfac
      */
     private $htmlFormLanguage = 'pl';
 
-    /**
-     * @return Transaction
-     */
     public function getTransaction(): Transaction
     {
         return $this->transaction;
     }
 
-    /**
-     * @return string
-     */
     public function getHtmlFormLanguage(): string
     {
         return $this->htmlFormLanguage;
     }
 
     /**
-     * @param string $htmlFormLanguage
      * @return TransactionDto
      */
     public function setHtmlFormLanguage(string $htmlFormLanguage): self

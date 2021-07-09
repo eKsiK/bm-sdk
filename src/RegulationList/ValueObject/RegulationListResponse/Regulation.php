@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace BlueMedia\RegulationList\ValueObject\RegulationListResponse;
@@ -31,33 +32,21 @@ final class Regulation
      */
     private $language;
 
-    /**
-     * @return string
-     */
     public function getRegulationID(): string
     {
         return $this->regulationID;
     }
 
-    /**
-     * @return string
-     */
     public function getUrl(): string
     {
         return $this->url;
     }
 
-    /**
-     * @return string
-     */
     public function getType(): string
     {
         return $this->type;
     }
 
-    /**
-     * @return string
-     */
     public function getLanguage(): string
     {
         return $this->language;

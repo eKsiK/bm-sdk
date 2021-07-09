@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace BlueMedia;
@@ -59,9 +60,6 @@ final class Client
     /**
      * Perform standard transaction.
      *
-     * @param array $transactionData
-     *
-     * @return Response
      * @api
      */
     public function getTransactionRedirect(array $transactionData): Response
@@ -75,9 +73,6 @@ final class Client
      * Perform transaction in background.
      * Returns payway form or transaction data for user.
      *
-     * @param array $transactionData
-     *
-     * @return Response
      * @api
      */
     public function doTransactionBackground(array $transactionData): Response
@@ -85,7 +80,7 @@ final class Client
         $transactionDto = TransactionDtoBuilder::build($transactionData, $this->configuration);
 
         $transactionDto->setRequest(new Request(
-            $transactionDto->getGatewayUrl() . ClientEnum::PAYMENT_ROUTE,
+            $transactionDto->getGatewayUrl().ClientEnum::PAYMENT_ROUTE,
             [self::HEADER => self::PAY_HEADER]
         ));
 
@@ -98,9 +93,6 @@ final class Client
      * Initialize transaction.
      * Returns transaction continuation or transaction information.
      *
-     * @param array $transactionData
-     *
-     * @return Response
      * @api
      */
     public function doTransactionInit(array $transactionData): Response
@@ -108,7 +100,7 @@ final class Client
         $transactionDto = TransactionDtoBuilder::build($transactionData, $this->configuration);
 
         $transactionDto->setRequest(new Request(
-            $transactionDto->getGatewayUrl() . ClientEnum::PAYMENT_ROUTE,
+            $transactionDto->getGatewayUrl().ClientEnum::PAYMENT_ROUTE,
             [self::HEADER => self::CONTINUE_HEADER]
         ));
 
@@ -121,7 +113,7 @@ final class Client
      * Process ITN requests.
      *
      * @param string $itn encoded with base64
-     * @return Response
+     *
      * @api
      */
     public function doItnIn(string $itn): Response
@@ -134,12 +126,9 @@ final class Client
     /**
      * Returns response for ITN IN request.
      *
-     * @param Itn $itn
-     * @param bool $transactionConfirmed
-     *
      * @return Response
-     * @api
      *
+     * @api
      */
     public function doItnInResponse(Itn $itn, bool $transactionConfirmed = true)
     {
@@ -149,8 +138,6 @@ final class Client
     /**
      * Returns payway list.
      *
-     * @param string $gatewayUrl
-     * @return Response
      * @api
      */
     public function getPaywayList(string $gatewayUrl): Response
@@ -160,15 +147,15 @@ final class Client
                 'gatewayUrl' => $gatewayUrl,
                 'paywayList' => [
                     'serviceID' => $this->configuration->getServiceId(),
-                    'messageID' => bin2hex(random_bytes(ClientEnum::MESSAGE_ID_LENGTH))
-                ]
+                    'messageID' => bin2hex(random_bytes(ClientEnum::MESSAGE_ID_LENGTH)),
+                ],
             ],
             PaywayListDto::class,
             $this->configuration
         );
 
         $paywayListDto->setRequest(new Request(
-            $paywayListDto->getGatewayUrl() . ClientEnum::PAYWAY_LIST_ROUTE
+            $paywayListDto->getGatewayUrl().ClientEnum::PAYWAY_LIST_ROUTE
         ));
 
         $parser = new ServiceResponseParser($this->httpClient->post($paywayListDto), $this->configuration);
@@ -179,8 +166,6 @@ final class Client
     /**
      * Returns payment regulations.
      *
-     * @param string $gatewayUrl
-     * @return Response
      * @api
      */
     public function getRegulationList(string $gatewayUrl): Response
@@ -190,15 +175,15 @@ final class Client
                 'gatewayUrl' => $gatewayUrl,
                 'regulationList' => [
                     'serviceID' => $this->configuration->getServiceId(),
-                    'messageID' => bin2hex(random_bytes(ClientEnum::MESSAGE_ID_LENGTH))
-                ]
+                    'messageID' => bin2hex(random_bytes(ClientEnum::MESSAGE_ID_LENGTH)),
+                ],
             ],
             RegulationListDto::class,
             $this->configuration
         );
 
         $regulationListDto->setRequest(new Request(
-            $regulationListDto->getGatewayUrl() . ClientEnum::GET_REGULATIONS_ROUTE
+            $regulationListDto->getGatewayUrl().ClientEnum::GET_REGULATIONS_ROUTE
         ));
 
         $parser = new ServiceResponseParser($this->httpClient->post($regulationListDto), $this->configuration);
@@ -209,8 +194,6 @@ final class Client
     /**
      * Checks id hash is valid.
      *
-     * @param SerializableInterface $data
-     * @return bool
      * @api
      */
     public function checkHash(SerializableInterface $data): bool
@@ -221,8 +204,6 @@ final class Client
     /**
      * Method allows to check if gateway returns with valid data.
      *
-     * @param array $data
-     * @return bool
      * @api
      */
     public function doConfirmationCheck(array $data): bool
@@ -231,10 +212,7 @@ final class Client
     }
 
     /**
-     * Method allows to get Itn object from base64
-     *
-     * @param string $itn
-     * @return Itn
+     * Method allows to get Itn object from base64.
      */
     public static function getItnObject(string $itn): Itn
     {

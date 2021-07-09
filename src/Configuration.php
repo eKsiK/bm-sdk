@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace BlueMedia;
@@ -28,12 +29,6 @@ class Configuration
      */
     private $hashSeparator;
 
-    /**
-     * @param string $serviceId
-     * @param string $sharedKey
-     * @param string $hashAlgo
-     * @param string $hashSeparator
-     */
     public function __construct(
         string $serviceId,
         string $sharedKey,
@@ -45,9 +40,7 @@ class Configuration
         }
 
         if (mb_strlen($serviceId) > 10) {
-            throw new InvalidArgumentException(
-                sprintf('Service ID is too long, should be max %s chars.', 10)
-            );
+            throw new InvalidArgumentException(sprintf('Service ID is too long, should be max %s chars.', 10));
         }
 
         $this->serviceId = $serviceId;
@@ -56,33 +49,21 @@ class Configuration
         $this->hashSeparator = $hashSeparator;
     }
 
-    /**
-     * @return string
-     */
     public function getServiceId(): string
     {
         return $this->serviceId;
     }
 
-    /**
-     * @return string
-     */
     public function getSharedKey(): string
     {
         return $this->sharedKey;
     }
 
-    /**
-     * @return string
-     */
     public function getHashAlgo(): string
     {
         return $this->hashAlgo;
     }
 
-    /**
-     * @return string
-     */
     public function getHashSeparator(): string
     {
         return $this->hashSeparator;

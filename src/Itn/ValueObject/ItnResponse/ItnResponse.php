@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace BlueMedia\Itn\ValueObject\ItnResponse;
@@ -39,25 +40,16 @@ class ItnResponse implements SerializableInterface
      */
     private $hash;
 
-    /**
-     * @return string
-     */
     public function getServiceID(): string
     {
         return $this->serviceID;
     }
 
-    /**
-     * @return TransactionsConfirmations
-     */
     public function getTransactionsConfirmations(): TransactionsConfirmations
     {
         return $this->transactionsConfirmations;
     }
 
-    /**
-     * @return string
-     */
     public function getHash(): string
     {
         return $this->hash;

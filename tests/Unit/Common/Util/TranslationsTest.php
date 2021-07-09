@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Tests\Unit\Common\Util;
@@ -38,7 +39,7 @@ class TranslationsTest extends BaseTestCase
         $translations = new Translations();
 
         $required_translation_keys = [
-            'form.test.key'
+            'form.test.key',
         ];
 
         $this->expectException(TranslationException::class);

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace BlueMedia\PaywayList\ValueObject\PaywayListResponse;
@@ -43,49 +44,31 @@ final class Gateway
      */
     private $statusDate;
 
-    /**
-     * @return int
-     */
     public function getGatewayID(): int
     {
         return $this->gatewayID;
     }
 
-    /**
-     * @return string
-     */
     public function getGatewayName(): string
     {
         return $this->gatewayName;
     }
 
-    /**
-     * @return string
-     */
     public function getGatewayType(): string
     {
         return $this->gatewayType;
     }
 
-    /**
-     * @return string
-     */
     public function getBankName(): string
     {
         return $this->bankName;
     }
 
-    /**
-     * @return string
-     */
     public function getIconURL(): string
     {
         return $this->iconURL;
     }
 
-    /**
-     * @return string
-     */
     public function getStatusDate(): string
     {
         return $this->statusDate;

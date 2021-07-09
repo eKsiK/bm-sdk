@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace BlueMedia\RegulationList\ValueObject\RegulationListResponse;
@@ -14,9 +15,6 @@ final class RegulationListResponse extends RegulationList
      */
     private $regulations;
 
-    /**
-     * @return Regulations
-     */
     public function getRegulations(): Regulations
     {
         return $this->regulations;

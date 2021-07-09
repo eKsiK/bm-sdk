@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace BlueMedia\HttpClient\ValueObject;
@@ -25,17 +26,11 @@ final class Request
         $this->requestHeaders = $requestHeaders;
     }
 
-    /**
-     * @return string
-     */
     public function getRequestUrl(): string
     {
         return $this->requestUrl;
     }
 
-    /**
-     * @return array
-     */
     public function getRequestHeaders(): array
     {
         return $this->requestHeaders;

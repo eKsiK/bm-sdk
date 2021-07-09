@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Tests\Unit\Common\Parser;
@@ -28,7 +29,7 @@ class ServiceResponseParserTest extends BaseTestCase
     {
         return [
             ['ERROR'],
-            ['<error>something</error>']
+            ['<error>something</error>'],
         ];
     }
 }

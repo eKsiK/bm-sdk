@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace BlueMedia\Transaction\ValueObject;
@@ -39,25 +40,16 @@ final class TransactionInit extends Transaction
      */
     private $paymentStatus;
 
-    /**
-     * @return string
-     */
     public function getConfirmation(): string
     {
         return $this->confirmation;
     }
 
-    /**
-     * @return string
-     */
     public function getReason(): string
     {
         return $this->reason;
     }
 
-    /**
-     * @return string
-     */
     public function getPaymentStatus(): string
     {
         return $this->paymentStatus;

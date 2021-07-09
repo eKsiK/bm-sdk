@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Tests\Unit\Serializer;
@@ -15,8 +16,8 @@ class SerializerTest extends BaseTestCase
             'orderId' => '123-123',
             'amount' => '1.20',
             'description' => 'Transakcja 123-123',
-            'gatewayId' => '0'
-        ]
+            'gatewayId' => '0',
+        ],
     ];
 
     private $serializer;

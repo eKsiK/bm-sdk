@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace BlueMedia\Itn\Decoder;
@@ -11,7 +12,7 @@ class ItnDecoder
     {
         $xmlData = base64_decode($itn, true);
 
-        if ($xmlData === false || !preg_match_all(ClientEnum::PATTERN_XML, $xmlData)) {
+        if (false === $xmlData || !preg_match_all(ClientEnum::PATTERN_XML, $xmlData)) {
             throw new \InvalidArgumentException('ITN data must be an valid XML, base64 encoded.');
         }
 

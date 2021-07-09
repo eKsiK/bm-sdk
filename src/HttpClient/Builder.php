@@ -2,9 +2,7 @@
 
 declare(strict_types=1);
 
-
 namespace BlueMedia\HttpClient;
-
 
 use Http\Client\Common\HttpMethodsClient;
 use Http\Client\Common\HttpMethodsClientInterface;
@@ -82,7 +80,7 @@ class Builder
 
     public function removePlugin(string $fqcn): void
     {
-        foreach($this->plugins as $idx => $plugin) {
+        foreach ($this->plugins as $idx => $plugin) {
             if ($plugin instanceof $fqcn) {
                 unset($this->plugins[$idx]);
                 $this->httpClientModified = true;

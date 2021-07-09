@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace BlueMedia\Common\Util;
@@ -12,7 +13,7 @@ final class EnvironmentRequirements
         'xmlreader',
         'iconv',
         'mbstring',
-        'hash'
+        'hash',
     ];
 
     public const PHP_VERSION = 70200;
@@ -20,8 +21,9 @@ final class EnvironmentRequirements
     /**
      * Checks PHP required environment.
      *
-     * @return void
      * @throws EnviromentRequirementException
+     *
+     * @return void
      */
     public static function checkPhpEnvironment()
     {
@@ -34,9 +36,6 @@ final class EnvironmentRequirements
         }
     }
 
-    /**
-     * @return bool
-     */
     public static function hasSupportedPhpVersion(): bool
     {
         return PHP_VERSION_ID >= self::PHP_VERSION;

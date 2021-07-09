@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace BlueMedia\Common\Enum;
@@ -21,7 +22,7 @@ abstract class ClientEnum
         self::HASH_MD5,
         self::HASH_SHA1,
         self::HASH_SHA256,
-        self::HASH_SHA512
+        self::HASH_SHA512,
     ];
 
     public const HASH_SEPARATOR = '|';

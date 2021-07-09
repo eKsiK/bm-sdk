@@ -1,9 +1,9 @@
 <?php
+
 declare(strict_types=1);
 
 namespace BlueMedia\Transaction\ValueObject;
 
-use BlueMedia\Serializer\SerializableInterface;
 use JMS\Serializer\Annotation\Type;
 use JMS\Serializer\Annotation\AccessorOrder;
 
@@ -31,17 +31,11 @@ final class TransactionContinue extends Transaction
      */
     private $redirecturl;
 
-    /**
-     * @return string
-     */
     public function getStatus(): string
     {
         return $this->status;
     }
 
-    /**
-     * @return string
-     */
     public function getRedirectUrl(): string
     {
         return $this->redirecturl;

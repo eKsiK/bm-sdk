@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace BlueMedia\Confirmation\ValueObject;
@@ -38,25 +39,16 @@ class Confirmation extends AbstractValueObject implements SerializableInterface
      */
     private $Hash;
 
-    /**
-     * @return string
-     */
     public function getServiceID(): string
     {
         return $this->ServiceID;
     }
 
-    /**
-     * @return string
-     */
     public function getOrderID(): string
     {
         return $this->OrderID;
     }
 
-    /**
-     * @return string
-     */
     public function getHash(): string
     {
         return $this->Hash;

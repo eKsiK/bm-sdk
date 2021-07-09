@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace BlueMedia\PaywayList\Dto;
@@ -16,9 +17,6 @@ final class PaywayListDto extends AbstractDto
      */
     private $paywayList;
 
-    /**
-     * @return PaywayList
-     */
     public function getPaywayList(): PaywayList
     {
         return $this->paywayList;

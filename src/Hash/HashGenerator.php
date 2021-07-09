@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace BlueMedia\Hash;
@@ -9,18 +10,13 @@ final class HashGenerator
 {
     /**
      * Generates hash.
-     *
-     * @param array $data
-     * @param Configuration $configuration
-     *
-     * @return string
      */
     public static function generateHash(array $data, Configuration $configuration): string
     {
         $result = '';
 
         foreach ($data as $name => $value) {
-            if (mb_strtolower($name) === 'hash') {
+            if ('hash' === mb_strtolower($name)) {
                 unset($data[$name]);
                 continue;
             }

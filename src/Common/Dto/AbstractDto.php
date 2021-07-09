@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace BlueMedia\Common\Dto;
@@ -21,9 +22,6 @@ abstract class AbstractDto
      */
     protected $request;
 
-    /**
-     * @return string
-     */
     public function getGatewayUrl(): string
     {
         return $this->gatewayUrl;

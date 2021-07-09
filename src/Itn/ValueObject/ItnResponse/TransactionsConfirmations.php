@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace BlueMedia\Itn\ValueObject\ItnResponse;
@@ -14,9 +15,6 @@ final class TransactionsConfirmations implements SerializableInterface
      */
     private $transactionConfirmed;
 
-    /**
-     * @return TransactionConfirmed
-     */
     public function getTransactionConfirmed(): TransactionConfirmed
     {
         return $this->transactionConfirmed;

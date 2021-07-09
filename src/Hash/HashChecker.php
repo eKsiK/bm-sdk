@@ -1,9 +1,9 @@
 <?php
+
 declare(strict_types=1);
 
 namespace BlueMedia\Hash;
 
-use RuntimeException;
 use BlueMedia\Configuration;
 use BlueMedia\Serializer\SerializableInterface;
 
@@ -17,6 +17,5 @@ final class HashChecker
         );
 
         return $dataHash === $data->getHash();
-
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace BlueMedia\RegulationList\Dto;
@@ -16,9 +17,6 @@ final class RegulationListDto extends AbstractDto
      */
     private $regulationList;
 
-    /**
-     * @return RegulationList
-     */
     public function getRegulationList(): RegulationList
     {
         return $this->regulationList;

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Tests\Fixtures\Transaction;
@@ -19,14 +20,14 @@ abstract class TransactionBackground
                 'customerIP' => '127.0.0.1',
                 'title' => 'Test',
                 'validityTime' => date('Y-m-d H:i:s', strtotime('now +5 hour')),
-                'linkValidityTime' => date('Y-m-d H:i:s', strtotime('now +5 hour'))
-            ]
+                'linkValidityTime' => date('Y-m-d H:i:s', strtotime('now +5 hour')),
+            ],
         ];
     }
 
     public static function getTransactionBackgroundResponse(): string
     {
-        return file_get_contents(__DIR__ . '/TransactionBackgroundResponse.xml');
+        return file_get_contents(__DIR__.'/TransactionBackgroundResponse.xml');
     }
 
     public static function getTransactionBackgroundResponseData(): array
@@ -36,6 +37,6 @@ abstract class TransactionBackground
 
     public static function getPaywayFormResponse(): string
     {
-        return file_get_contents(__DIR__ . '/PaywayFormResponse.txt');
+        return file_get_contents(__DIR__.'/PaywayFormResponse.txt');
     }
 }

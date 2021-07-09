@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace BlueMedia\Transaction\Parser;
@@ -26,7 +27,7 @@ final class TransactionResponseParser extends ResponseParser
             return new Response(htmlspecialchars_decode($paywayForm['1']['0']));
         }
 
-        if ($transactionInit === true) {
+        if (true === $transactionInit) {
             return new Response($this->parseTransactionInitResponse());
         }
 
@@ -37,14 +38,14 @@ final class TransactionResponseParser extends ResponseParser
     {
         $matchesCount = preg_match_all(ClientEnum::PATTERN_PAYWAY, $this->response, $data);
 
-        return $matchesCount === 0 ? [] : $data;
+        return 0 === $matchesCount ? [] : $data;
     }
 
     private function parseTransactionBackgroundResponse(): SerializableInterface
     {
         $transaction = (new Serializer())->deserializeXml($this->response, TransactionBackground::class);
 
-        if (HashChecker::checkHash($transaction, $this->configuration) === false) {
+        if (false === HashChecker::checkHash($transaction, $this->configuration)) {
             throw HashException::wrongHashError();
         }
 
@@ -61,7 +62,7 @@ final class TransactionResponseParser extends ResponseParser
             $transaction = (new Serializer())->deserializeXml($this->response, TransactionInit::class);
         }
 
-        if (HashChecker::checkHash($transaction, $this->configuration) === false) {
+        if (false === HashChecker::checkHash($transaction, $this->configuration)) {
             throw HashException::wrongHashError();
         }
 

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace BlueMedia\PaywayList\ValueObject\PaywayListResponse;
@@ -15,9 +16,6 @@ final class PaywayListResponse extends PaywayList
      */
     private $gateways;
 
-    /**
-     * @return array
-     */
     public function getGateways(): array
     {
         return $this->gateways;

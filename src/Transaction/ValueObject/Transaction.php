@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace BlueMedia\Transaction\ValueObject;
@@ -262,124 +263,80 @@ class Transaction extends AbstractValueObject implements SerializableInterface
      */
     protected $returnURL;
 
-    /**
-     * @param string $serviceID
-     * @return Transaction
-     */
     public function setServiceId(string $serviceID): Transaction
     {
         $this->serviceID = $serviceID;
+
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getServiceID(): string
     {
         return $this->serviceID;
     }
 
-    /**
-     * @param string $hash
-     * @return Transaction
-     */
     public function setHash(string $hash): Transaction
     {
         $this->hash = $hash;
+
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getHash(): string
     {
         return trim($this->hash);
     }
 
-    /**
-     * @return string
-     */
     public function getReceiverNRB(): string
     {
         return $this->receiverNRB;
     }
 
-    /**
-     * @return string
-     */
     public function getReceiverName(): string
     {
         return $this->receiverName;
     }
 
-    /**
-     * @return string
-     */
     public function getReceiverAddress(): string
     {
         return $this->receiverAddress;
     }
 
-    /**
-     * @return string
-     */
     public function getOrderID(): string
     {
         return $this->orderID;
     }
 
-    /**
-     * @return string
-     */
     public function getAmount(): string
     {
         return $this->amount;
     }
 
-    /**
-     * @return string
-     */
     public function getCurrency(): string
     {
         return $this->currency;
     }
 
-    /**
-     * @return string
-     */
     public function getTitle(): string
     {
         return $this->title;
     }
 
-    /**
-     * @return string
-     */
     public function getRemoteID(): string
     {
         return $this->remoteID;
     }
 
-    /**
-     * @return string
-     */
     public function getBankHref(): string
     {
         return $this->bankHref;
     }
 
-    /**
-     * @return string
-     */
     public function getReturnURL(): string
     {
         return $this->returnURL;
     }
-    /**
-     * @return string
-     */
+
     public function getBlikAMKey(): string
     {
         return $this->blikAMKey;

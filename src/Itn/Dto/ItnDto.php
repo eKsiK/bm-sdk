@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace BlueMedia\Itn\Dto;
@@ -18,9 +19,6 @@ final class ItnDto extends AbstractDto implements SerializableInterface
      */
     private $itn;
 
-    /**
-     * @return Itn
-     */
     public function getItn(): Itn
     {
         return $this->itn;
