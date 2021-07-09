@@ -30,16 +30,18 @@ final class ClientTest extends BaseTestCase
         $result = $this->getHttpClient()
             ->getTransactionRedirect(TransactionFixtures\TransactionInit::getTransactionInitContinue());
 
-        $this->assertInstanceOf(Response::class, $result);
-        $this->assertIsString(Response::class, $result->getData());
+        $data = $result->getData();
+        $this->assertIsString(Response::class, $data);
+        $this->assertStringContainsString(
+            '<form action="https://pay-accept.bm.pl/payment" method="post" id="BlueMediaPaymentForm" name="BlueMediaPaymentForm">',
+            $data
+        );
     }
 
     /**
      * @dataProvider checkConfirmationProvider
-     * @param array $data
-     * @param bool $result
      */
-    public function testDoConfirmationCheckRetrurnsStatus(array $data, bool $result): void
+    public function testDoConfirmationCheckReturnsStatus(array $data, bool $result): void
     {
         $check = $this->getHttpClient()->doConfirmationCheck($data);
 
@@ -50,10 +52,11 @@ final class ClientTest extends BaseTestCase
     {
         $client = $this->getHttpClient(static function (\Http\Mock\Client $mockClient): \Http\Mock\Client {
             $mockClient->on(new RequestMatcher('/payment', 'pay-accept.bm.pl'), function (RequestInterface $request) {
-                // @TODO make assets
-                $body = (string) $request->getBody();
-
-                return new \Nyholm\Psr7\Response(200, [], TransactionFixtures\TransactionBackground::getTransactionBackgroundResponse());
+                return new \Nyholm\Psr7\Response(
+                    200,
+                    [],
+                    TransactionFixtures\TransactionBackground::getTransactionBackgroundResponse()
+                );
             });
 
             return $mockClient;
@@ -62,7 +65,6 @@ final class ClientTest extends BaseTestCase
         $result = $client
             ->doTransactionBackground(TransactionFixtures\TransactionBackground::getTransactionBackground());
 
-        $this->assertInstanceOf(Response::class, $result);
         $this->assertInstanceOf(TransactionBackground::class, $result->getData());
 
         $transactionBackground = $result->getData();
@@ -82,17 +84,17 @@ final class ClientTest extends BaseTestCase
         $this->assertSame($transactionBackgroundFixture['remoteID'], $transactionBackground->getRemoteID());
         $this->assertSame($transactionBackgroundFixture['bankHref'], $transactionBackground->getBankHref());
         $this->assertSame($transactionBackgroundFixture['returnURL'], $transactionBackground->getReturnURL());
-
     }
 
     public function testDoTransactionBackgroundReturnsPaywayForm(): void
     {
         $client = $this->getHttpClient(static function (\Http\Mock\Client $mockClient): \Http\Mock\Client {
             $mockClient->on(new RequestMatcher('/payment', 'pay-accept.bm.pl'), function (RequestInterface $request) {
-                // @TODO make assets
-                $body = (string) $request->getBody();
-
-                return new \Nyholm\Psr7\Response(200, [], TransactionFixtures\TransactionBackground::getPaywayFormResponse());
+                return new \Nyholm\Psr7\Response(
+                    200,
+                    [],
+                    TransactionFixtures\TransactionBackground::getPaywayFormResponse()
+                );
             });
 
             return $mockClient;
@@ -101,18 +103,24 @@ final class ClientTest extends BaseTestCase
         $result = $client
             ->doTransactionBackground(TransactionFixtures\TransactionBackground::getTransactionBackground());
 
-        $this->assertInstanceOf(Response::class, $result);
-        $this->assertIsString($result->getData());
+        $data = $result->getData();
+
+        $this->assertIsString($data);
+        $this->assertStringContainsString(
+            '<form action="https://pg-accept.blue.pl/gateway/test/index.jsp" name="formGoPBL" method="POST">',
+            $data
+        );
     }
 
     public function testDoTransactionInitReturnsTransactionContinueData(): void
     {
         $client = $this->getHttpClient(static function (\Http\Mock\Client $mockClient): \Http\Mock\Client {
             $mockClient->on(new RequestMatcher('/payment', 'pay-accept.bm.pl'), function (RequestInterface $request) {
-                // @TODO make assets
-                $body = (string) $request->getBody();
-
-                return new \Nyholm\Psr7\Response(200, [], TransactionFixtures\TransactionInit::getTransactionInitContinueResponse());
+                return new \Nyholm\Psr7\Response(
+                    200,
+                    [],
+                    TransactionFixtures\TransactionInit::getTransactionInitContinueResponse()
+                );
             });
 
             return $mockClient;
@@ -121,7 +129,6 @@ final class ClientTest extends BaseTestCase
         $result = $client
             ->doTransactionInit(TransactionFixtures\TransactionInit::getTransactionInitContinue());
 
-        $this->assertInstanceOf(Response::class, $result);
         $this->assertInstanceOf(TransactionContinue::class, $result->getData());
     }
 
@@ -129,10 +136,11 @@ final class ClientTest extends BaseTestCase
     {
         $client = $this->getHttpClient(static function (\Http\Mock\Client $mockClient): \Http\Mock\Client {
             $mockClient->on(new RequestMatcher('/payment', 'pay-accept.bm.pl'), function (RequestInterface $request) {
-                // @TODO make assets
-                $body = (string) $request->getBody();
-
-                return new \Nyholm\Psr7\Response(200, [], TransactionFixtures\TransactionInit::getTransactionInitResponse());
+                return new \Nyholm\Psr7\Response(
+                    200,
+                    [],
+                    TransactionFixtures\TransactionInit::getTransactionInitResponse()
+                );
             });
 
             return $mockClient;
@@ -141,7 +149,6 @@ final class ClientTest extends BaseTestCase
         $result = $client
             ->doTransactionInit(TransactionFixtures\TransactionInit::getTransactionInit());
 
-        $this->assertInstanceOf(Response::class, $result);
         $this->assertInstanceOf(TransactionInit::class, $result->getData());
     }
 
@@ -152,7 +159,6 @@ final class ClientTest extends BaseTestCase
         $itn = $result->getData();
         $itnFixture = (array) ItnFixtures\Itn::getTransactionXml();
 
-        $this->assertInstanceOf(Response::class, $result);
         $this->assertInstanceOf(Itn::class, $result->getData());
         $this->assertSame($itnFixture['remoteID'], $itn->getRemoteId());
         $this->assertSame($itnFixture['amount'], $itn->getAmount());
@@ -185,10 +191,11 @@ final class ClientTest extends BaseTestCase
     {
         $client = $this->getHttpClient(static function (\Http\Mock\Client $mockClient): \Http\Mock\Client {
             $mockClient->on(new RequestMatcher('/paywayList', 'pay-accept.bm.pl'), function (RequestInterface $request) {
-                // @TODO make assets
-                $body = (string) $request->getBody();
-
-                return new \Nyholm\Psr7\Response(200, [], PaywayListFixtures\PaywayList::getPaywayListResponse());
+                return new \Nyholm\Psr7\Response(
+                    200,
+                    [],
+                    PaywayListFixtures\PaywayList::getPaywayListResponse()
+                );
             });
 
             return $mockClient;
@@ -196,7 +203,6 @@ final class ClientTest extends BaseTestCase
 
         $result = $client->getPaywayList(parent::GATEWAY_URL);
 
-        $this->assertInstanceOf(Response::class, $result);
         $this->assertInstanceOf(PaywayListResponse::class, $result->getData());
     }
 
@@ -204,10 +210,11 @@ final class ClientTest extends BaseTestCase
     {
         $client = $this->getHttpClient(static function (\Http\Mock\Client $mockClient): \Http\Mock\Client {
             $mockClient->on(new RequestMatcher('/webapi/regulationsGet', 'pay-accept.bm.pl'), function (RequestInterface $request) {
-                // @TODO make assets
-                $body = (string) $request->getBody();
-
-                return new \Nyholm\Psr7\Response(200, [], RegulationListFixtures\RegulationList::getRegulationListResponse());
+                return new \Nyholm\Psr7\Response(
+                    200,
+                    [],
+                    RegulationListFixtures\RegulationList::getRegulationListResponse()
+                );
             });
 
             return $mockClient;
@@ -215,7 +222,6 @@ final class ClientTest extends BaseTestCase
 
         $result = $client->getRegulationList(parent::GATEWAY_URL);
 
-        $this->assertInstanceOf(Response::class, $result);
         $this->assertInstanceOf(RegulationListResponse::class, $result->getData());
     }
 
@@ -242,7 +248,6 @@ final class ClientTest extends BaseTestCase
         $itn = $this->getHttpClient()::getItnObject(ItnFixtures\Itn::getItnInRequest());
         $itnFixture = (array) ItnFixtures\Itn::getTransactionXml();
 
-        $this->assertInstanceOf(Itn::class, $itn);
         $this->assertSame($itnFixture['remoteID'], $itn->getRemoteId());
         $this->assertSame($itnFixture['amount'], $itn->getAmount());
         $this->assertSame($itnFixture['currency'], $itn->getCurrency());
