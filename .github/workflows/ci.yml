@@ -29,6 +29,27 @@ jobs:
       - name: Run friendsofphp/php-cs-fixer
         run: composer php-cs
 
+  type-checker:
+    name: Type Checker
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.0
+          coverage: none
+
+      - name: Install composer dependencies
+        uses: ramsey/composer-install@v1
+
+      - name: Run vimeo/psalm
+        run: composer psalm
+
   tests:
     name: Tests
 
