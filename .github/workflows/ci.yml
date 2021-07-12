@@ -41,7 +41,6 @@ jobs:
           - "7.2"
           - "7.4"
           - "8.0"
-          - "8.1"
 
         compiler:
           - default
@@ -52,10 +51,6 @@ jobs:
 
         include:
           - php-version: "8.0"
-            compiler: jit
-            dependencies: highest
-
-          - php-version: "8.1"
             compiler: jit
             dependencies: highest
 
