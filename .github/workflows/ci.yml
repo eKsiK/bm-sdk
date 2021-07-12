@@ -75,3 +75,40 @@ jobs:
 
       - name: Run tests with phpunit
         run: time composer test
+
+  code-coverage:
+    name: Code Coverage
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        php-version:
+          - 8.0
+
+        dependencies:
+          - highest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install PHP with extensions
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
+          coverage: pcov
+
+      - name: Install dependencies with composer
+        uses: ramsey/composer-install@v1
+        with:
+          dependency-versions: ${{ matrix.dependencies }}
+
+      - name: Collect code coverage with phpunit
+        run: composer code-coverage
+
+      - name: Send code coverage report to Codecov.io
+        uses: codecov/codecov-action@v1.5.2
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
