@@ -22,7 +22,6 @@ final class ServiceDtoBuilder
         $serializer = new Serializer();
 
         $dto = $serializer->serializeDataToDto($data, $type);
-        /* @psalm-suppress UndefinedMethod */
         $dto->getRequestData()->setServiceId($configuration->getServiceId());
 
         $hash = HashGenerator::generateHash(
@@ -30,7 +29,6 @@ final class ServiceDtoBuilder
             $configuration
         );
 
-        /* @psalm-suppress UndefinedMethod */
         $dto->getRequestData()->setHash($hash);
 
         return $dto;

@@ -28,5 +28,10 @@
                 <directory name="src/Transaction/Dto"/>
             </errorLevel>
         </MissingConstructor>
+        <UndefinedMethod>
+            <errorLevel type="info">
+                <file name="src/Common/Builder/ServiceDtoBuilder.php"/>
+            </errorLevel>
+        </UndefinedMethod>
     </issueHandlers>
 </psalm>
