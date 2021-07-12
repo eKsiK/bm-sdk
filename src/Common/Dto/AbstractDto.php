@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace BlueMedia\Common\Dto;
 
+use BlueMedia\Common\ValueObject\AbstractValueObject;
 use BlueMedia\HttpClient\ValueObject\Request;
-use BlueMedia\Serializer\SerializableInterface;
 use JMS\Serializer\Annotation\Type;
 
 abstract class AbstractDto
@@ -39,5 +39,5 @@ abstract class AbstractDto
         return $this->request;
     }
 
-    abstract public function getRequestData(): SerializableInterface;
+    abstract public function getRequestData(): AbstractValueObject;
 }

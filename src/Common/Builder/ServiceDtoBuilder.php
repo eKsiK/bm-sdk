@@ -11,6 +11,12 @@ use BlueMedia\Common\Dto\AbstractDto;
 
 final class ServiceDtoBuilder
 {
+    /**
+     * @template T of AbstractDto
+     * @psalm-param class-string<T> $type
+     *
+     * @return T
+     */
     public static function build(array $data, string $type, Configuration $configuration): AbstractDto
     {
         $serializer = new Serializer();

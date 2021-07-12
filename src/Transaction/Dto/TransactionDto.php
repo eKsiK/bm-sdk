@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace BlueMedia\Transaction\Dto;
 
 use BlueMedia\Common\Dto\AbstractDto;
-use BlueMedia\Serializer\SerializableInterface;
+use BlueMedia\Common\ValueObject\AbstractValueObject;
 use BlueMedia\Transaction\ValueObject\Transaction;
 use JMS\Serializer\Annotation\Type;
 
@@ -44,7 +44,7 @@ final class TransactionDto extends AbstractDto implements TransactionDtoInterfac
         return $this;
     }
 
-    public function getRequestData(): SerializableInterface
+    public function getRequestData(): AbstractValueObject
     {
         return $this->getTransaction();
     }

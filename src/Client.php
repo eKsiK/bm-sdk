@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace BlueMedia;
 
+use BlueMedia\Common\ValueObject\HashableInterface;
 use BlueMedia\Confirmation\Builder\ConfirmationVOBuilder;
 use BlueMedia\HttpClient\HttpClientInterface;
 use BlueMedia\Hash\HashChecker;
 use BlueMedia\Itn\Builder\ItnVOBuilder;
 use BlueMedia\Itn\Decoder\ItnDecoder;
-use BlueMedia\Serializer\SerializableInterface;
 use BlueMedia\Transaction\View;
 use BlueMedia\Itn\ValueObject\Itn;
 use BlueMedia\HttpClient\HttpClient;
@@ -40,7 +40,7 @@ final class Client
     private $configuration;
 
     /**
-     * @var HttpClientInterface|null
+     * @var HttpClientInterface
      */
     private $httpClient;
 
@@ -126,11 +126,9 @@ final class Client
     /**
      * Returns response for ITN IN request.
      *
-     * @return Response
-     *
      * @api
      */
-    public function doItnInResponse(Itn $itn, bool $transactionConfirmed = true)
+    public function doItnInResponse(Itn $itn, bool $transactionConfirmed = true): Response
     {
         return new Response(ItnResponseBuilder::build($itn, $transactionConfirmed, $this->configuration));
     }
@@ -196,7 +194,7 @@ final class Client
      *
      * @api
      */
-    public function checkHash(SerializableInterface $data): bool
+    public function checkHash(HashableInterface $data): bool
     {
         return HashChecker::checkHash($data, $this->configuration);
     }

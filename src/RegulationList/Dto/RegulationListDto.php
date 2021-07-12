@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace BlueMedia\RegulationList\Dto;
 
+use BlueMedia\Common\ValueObject\AbstractValueObject;
 use JMS\Serializer\Annotation\Type;
 use BlueMedia\Common\Dto\AbstractDto;
-use BlueMedia\Serializer\SerializableInterface;
 use BlueMedia\RegulationList\ValueObject\RegulationList;
 
 final class RegulationListDto extends AbstractDto
@@ -22,7 +22,7 @@ final class RegulationListDto extends AbstractDto
         return $this->regulationList;
     }
 
-    public function getRequestData(): SerializableInterface
+    public function getRequestData(): AbstractValueObject
     {
         return $this->getRegulationList();
     }

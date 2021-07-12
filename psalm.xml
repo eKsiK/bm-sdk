@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<psalm
+    errorLevel="5"
+    resolveFromConfigFile="true"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="https://getpsalm.org/schema/config"
+    xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
+>
+    <projectFiles>
+        <directory name="src" />
+        <ignoreFiles>
+            <directory name="vendor" />
+        </ignoreFiles>
+    </projectFiles>
+    <issueHandlers>
+        <MissingConstructor>
+            <errorLevel type="suppress">
+                <directory name="src/Common/Dto"/>
+                <directory name="src/Common/ValueObject"/>
+                <directory name="src/Confirmation/ValueObject"/>
+                <directory name="src/Itn/ValueObject"/>
+                <directory name="src/Itn/Dto"/>
+                <directory name="src/PaywayList/ValueObject"/>
+                <directory name="src/PaywayList/Dto"/>
+                <directory name="src/RegulationList/ValueObject"/>
+                <directory name="src/RegulationList/Dto"/>
+                <directory name="src/Transaction/ValueObject"/>
+                <directory name="src/Transaction/Dto"/>
+            </errorLevel>
+        </MissingConstructor>
+        <UndefinedMethod>
+            <errorLevel type="info">
+                <file name="src/Common/Builder/ServiceDtoBuilder.php"/>
+            </errorLevel>
+        </UndefinedMethod>
+    </issueHandlers>
+</psalm>
