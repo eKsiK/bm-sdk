@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace BlueMedia\Serializer;
 
-use BlueMedia\Common\Dto\AbstractDto;
 use JMS\Serializer\SerializerBuilder;
 use JMS\Serializer\Naming\SerializedNameAnnotationStrategy;
 use JMS\Serializer\Naming\IdenticalPropertyNamingStrategy;
@@ -32,6 +31,7 @@ final class Serializer implements SerializerInterface
     /**
      * @template T
      * @psalm-param class-string<T> $type
+     *
      * @return T
      */
     public function serializeDataToDto(array $data, string $type)
@@ -47,6 +47,7 @@ final class Serializer implements SerializerInterface
     /**
      * @template T
      * @psalm-param class-string<T> $type
+     *
      * @return T
      */
     public function fromArray(array $data, string $type)
@@ -57,6 +58,7 @@ final class Serializer implements SerializerInterface
     /**
      * @template T
      * @psalm-param class-string<T> $type
+     *
      * @return T
      */
     public function deserializeXml(string $xml, string $type)

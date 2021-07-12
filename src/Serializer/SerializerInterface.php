@@ -9,6 +9,7 @@ interface SerializerInterface
     /**
      * @template T
      * @psalm-param class-string<T> $type
+     *
      * @return T
      */
     public function serializeDataToDto(array $data, string $type);
@@ -18,6 +19,7 @@ interface SerializerInterface
     /**
      * @template T
      * @psalm-param class-string<T> $type
+     *
      * @return T
      */
     public function fromArray(array $data, string $type);
@@ -25,6 +27,7 @@ interface SerializerInterface
     /**
      * @template T
      * @psalm-param class-string<T> $type
+     *
      * @return T
      */
     public function deserializeXml(string $xml, string $type);

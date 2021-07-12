@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace BlueMedia\Itn\Builder;
 
 use BlueMedia\Itn\Dto\ItnDto;
-use BlueMedia\Serializer\SerializableInterface;
 use BlueMedia\Serializer\Serializer;
 use BlueMedia\Common\Util\XMLParser;
 

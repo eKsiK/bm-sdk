@@ -14,6 +14,7 @@ final class ServiceDtoBuilder
     /**
      * @template T of AbstractDto
      * @psalm-param class-string<T> $type
+     *
      * @return T
      */
     public static function build(array $data, string $type, Configuration $configuration): AbstractDto
@@ -21,7 +22,7 @@ final class ServiceDtoBuilder
         $serializer = new Serializer();
 
         $dto = $serializer->serializeDataToDto($data, $type);
-        /** @psalm-suppress UndefinedMethod */
+        /* @psalm-suppress UndefinedMethod */
         $dto->getRequestData()->setServiceId($configuration->getServiceId());
 
         $hash = HashGenerator::generateHash(
@@ -29,7 +30,7 @@ final class ServiceDtoBuilder
             $configuration
         );
 
-        /** @psalm-suppress UndefinedMethod */
+        /* @psalm-suppress UndefinedMethod */
         $dto->getRequestData()->setHash($hash);
 
         return $dto;

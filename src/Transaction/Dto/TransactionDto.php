@@ -6,7 +6,6 @@ namespace BlueMedia\Transaction\Dto;
 
 use BlueMedia\Common\Dto\AbstractDto;
 use BlueMedia\Common\ValueObject\AbstractValueObject;
-use BlueMedia\Serializer\SerializableInterface;
 use BlueMedia\Transaction\ValueObject\Transaction;
 use JMS\Serializer\Annotation\Type;
 

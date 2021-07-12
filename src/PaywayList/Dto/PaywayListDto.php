@@ -7,7 +7,6 @@ namespace BlueMedia\PaywayList\Dto;
 use BlueMedia\Common\Dto\AbstractDto;
 use BlueMedia\Common\ValueObject\AbstractValueObject;
 use JMS\Serializer\Annotation\Type;
-use BlueMedia\Serializer\SerializableInterface;
 use BlueMedia\PaywayList\ValueObject\PaywayList;
 
 final class PaywayListDto extends AbstractDto
