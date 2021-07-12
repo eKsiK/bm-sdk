@@ -4,17 +4,30 @@ declare(strict_types=1);
 
 namespace BlueMedia\Serializer;
 
-use BlueMedia\Common\Dto\AbstractDto;
-
 interface SerializerInterface
 {
-    public function serializeDataToDto(array $data, string $type): AbstractDto;
+    /**
+     * @template T
+     * @psalm-param class-string<T> $type
+     * @return T
+     */
+    public function serializeDataToDto(array $data, string $type);
 
     public function toArray(object $object): array;
 
+    /**
+     * @template T
+     * @psalm-param class-string<T> $type
+     * @return T
+     */
     public function fromArray(array $data, string $type);
 
-    public function deserializeXml(string $xml, string $type): SerializableInterface;
+    /**
+     * @template T
+     * @psalm-param class-string<T> $type
+     * @return T
+     */
+    public function deserializeXml(string $xml, string $type);
 
     public function toXml($data): string;
 }

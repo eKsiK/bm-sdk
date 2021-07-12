@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace BlueMedia\Transaction;
 
-use BlueMedia\Common\Dto\AbstractDto;
 use BlueMedia\Common\Enum\ClientEnum;
 use BlueMedia\Common\Util\Translations;
+use BlueMedia\Transaction\Dto\TransactionDto;
 
 final class View
 {
-    public static function createRedirectHtml(AbstractDto $transactionDto): string
+    public static function createRedirectHtml(TransactionDto $transactionDto): string
     {
         $translation = (new Translations())->getTranslation(
             $transactionDto->getHtmlFormLanguage()

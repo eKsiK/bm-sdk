@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace BlueMedia\Itn\Dto;
 
 use BlueMedia\Common\Dto\AbstractDto;
+use BlueMedia\Common\ValueObject\AbstractValueObject;
 use BlueMedia\Itn\ValueObject\Itn;
 use BlueMedia\Serializer\SerializableInterface;
 use JMS\Serializer\Annotation\XmlList;
@@ -24,7 +25,7 @@ final class ItnDto extends AbstractDto implements SerializableInterface
         return $this->itn;
     }
 
-    public function getRequestData(): SerializableInterface
+    public function getRequestData(): AbstractValueObject
     {
         return $this->getItn();
     }

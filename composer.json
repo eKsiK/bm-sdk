@@ -20,7 +20,8 @@
         "php-http/mock-client": "^1.4",
         "phpunit/phpunit": "^8.5",
         "symfony/http-client": "^5.3",
-        "symfony/var-dumper": "^5.3"
+        "symfony/var-dumper": "^5.3",
+        "vimeo/psalm": "^4.8"
     },
     "config": {
         "sort-packages": true

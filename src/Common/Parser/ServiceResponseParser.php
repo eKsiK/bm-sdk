@@ -9,6 +9,11 @@ use BlueMedia\Serializer\Serializer;
 
 final class ServiceResponseParser extends ResponseParser
 {
+    /**
+     * @template T
+     * @psalm-param class-string<T> $type
+     * @return T
+     */
     public function parseListResponse(string $type): SerializableInterface
     {
         $this->isErrorResponse();
