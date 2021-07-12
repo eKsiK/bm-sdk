@@ -8,6 +8,7 @@
         "ext-mbstring": "*",
         "ext-simplexml": "*",
         "jms/serializer": "^1.14|^2.0|^3.0",
+        "php-http/client-common": "^2.4",
         "php-http/discovery": "^1.14",
         "psr/http-client-implementation": "^1.0",
         "psr/http-factory-implementation": "^1.0",
@@ -16,7 +17,6 @@
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.0",
         "nyholm/psr7": "^1.4",
-        "pcov/clobber": "^2.0",
         "php-http/mock-client": "^1.4",
         "phpunit/phpunit": "^8.5",
         "symfony/http-client": "^5.3",
@@ -42,6 +42,8 @@
     "prefer-stable": true,
     "scripts": {
         "php-cs": "@php vendor/bin/php-cs-fixer fix --dry-run",
-        "php-cs-fix": "@php vendor/bin/php-cs-fixer fix"
+        "php-cs-fix": "@php vendor/bin/php-cs-fixer fix",
+        "test": "@php vendor/bin/phpunit --configuration phpunit.dist.xml",
+        "code-coverage": "@test --coverage-clover=coverage.xml"
     }
 }

@@ -1,0 +1,114 @@
+# https://help.github.com/en/categories/automating-your-workflow-with-github-actions
+
+on:
+  - pull_request
+  - push
+
+name: CI
+
+jobs:
+  coding-standards:
+    name: Coding Standards
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.0
+          tools: 'composer:v2'
+          coverage: none
+
+      - name: Install composer dependencies
+        uses: ramsey/composer-install@v1
+
+      - name: Run friendsofphp/php-cs-fixer
+        run: composer php-cs
+
+  tests:
+    name: Tests
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        php-version:
+          - "7.2"
+          - "7.3"
+          - "7.4"
+          - "8.0"
+
+        compiler:
+          - default
+
+        dependencies:
+          - lowest
+          - highest
+
+        include:
+          - php-version: "8.0"
+            compiler: jit
+            dependencies: highest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Override PHP ini values for JIT Compiler
+        if: matrix.compiler == 'jit'
+        run: echo "PHP_INI_VALUES::opcache.enable=1, opcache.enable_cli=1, opcache.optimization_level=-1, opcache.jit=1255, opcache.jit_buffer_size=32M" >> $GITHUB_ENV
+
+      - name: Install PHP with extensions
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
+
+      - name: Install dependencies with composer
+        uses: ramsey/composer-install@v1
+        with:
+          dependency-versions: ${{ matrix.dependencies }}
+
+      - name: Run tests with phpunit
+        run: time composer test
+
+  code-coverage:
+    name: Code Coverage
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        php-version:
+          - 7.4
+
+        dependencies:
+          - highest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install PHP with extensions
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
+          coverage: pcov
+
+      - name: Install dependencies with composer
+        uses: ramsey/composer-install@v1
+        with:
+          dependency-versions: ${{ matrix.dependencies }}
+
+      - name: Collect code coverage with phpunit
+        run: composer code-coverage
+
+      - name: Send code coverage report to Codecov.io
+        uses: codecov/codecov-action@v1.5.2
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
