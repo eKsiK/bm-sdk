@@ -32,5 +32,6 @@ abstract class ClientEnum
     public const PATTERN_XML_ERROR = '@<error>(.*)</error>@Usi';
     public const PATTERN_GENERAL_ERROR = '/error(.*)/si';
 
-    public const MESSAGE_ID_LENGTH = 32;
+    // each byte will give us 2 hex characters for messageId
+    public const MESSAGE_ID_BYTES = 16;
 }
