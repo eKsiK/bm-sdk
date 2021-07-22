@@ -6,7 +6,7 @@ namespace BlueMedia\PaywayList\ValueObject\PaywayListResponse;
 
 use JMS\Serializer\Annotation\Type;
 
-final class Gateway
+final class Gateway implements GatewayInterface
 {
     /**
      * @var int
