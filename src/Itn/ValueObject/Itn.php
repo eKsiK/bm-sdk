@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace BlueMedia\Itn\ValueObject;
 
 use BlueMedia\Common\ValueObject\AbstractValueObject;
+use BlueMedia\Common\ValueObject\HashableInterface;
 use JMS\Serializer\Annotation\Type;
 use JMS\Serializer\Annotation\AccessorOrder;
 use BlueMedia\Serializer\SerializableInterface;
@@ -24,7 +25,7 @@ use BlueMedia\Serializer\SerializableInterface;
  *      "hash"
  * })
  */
-final class Itn extends AbstractValueObject implements SerializableInterface
+final class Itn extends AbstractValueObject implements SerializableInterface, HashableInterface
 {
     /**
      * Transaction service id.
