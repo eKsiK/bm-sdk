@@ -157,6 +157,7 @@ final class ClientTest extends BaseTestCase
     {
         $result = $this->getHttpClient()->doItnIn(ItnFixtures\Itn::getItnInRequest());
 
+        /** @var Itn $itn */
         $itn = $result->getData();
         $itnFixture = (array) ItnFixtures\Itn::getTransactionXml();
 
@@ -164,6 +165,7 @@ final class ClientTest extends BaseTestCase
         $this->assertSame($itnFixture['remoteID'], $itn->getRemoteId());
         $this->assertSame($itnFixture['amount'], $itn->getAmount());
         $this->assertSame($itnFixture['currency'], $itn->getCurrency());
+        $this->assertSame((int) $itnFixture['gatewayID'], $itn->getGatewayID());
         $this->assertSame($itnFixture['paymentDate'], $itn->getPaymentDate());
         $this->assertSame($itnFixture['paymentStatus'], $itn->getPaymentStatus());
         $this->assertSame($itnFixture['paymentStatusDetails'], $itn->getPaymentStatusDetails());

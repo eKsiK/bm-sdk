@@ -146,6 +146,11 @@ final class Itn extends AbstractValueObject implements SerializableInterface, Ha
         return $this->currency;
     }
 
+    public function getGatewayID(): int
+    {
+        return $this->gatewayID;
+    }
+
     public function getPaymentDate(): string
     {
         return $this->paymentDate;
