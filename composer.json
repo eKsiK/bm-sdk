@@ -4,9 +4,13 @@
     "license": "LGPL-3.0-only",
     "require": {
         "php": ">=7.2",
+        "ext-hash": "*",
+        "ext-iconv": "*",
         "ext-json": "*",
         "ext-mbstring": "*",
         "ext-simplexml": "*",
+        "ext-xmlreader": "*",
+        "ext-xmlwriter": "*",
         "jms/serializer": "^1.14|^2.0|^3.0",
         "php-http/client-common": "^2.4",
         "php-http/discovery": "^1.14",
