@@ -28,7 +28,7 @@ use BlueMedia\Transaction\Parser\TransactionResponseParser;
 use BlueMedia\PaywayList\ValueObject\PaywayListResponse\PaywayListResponse;
 use BlueMedia\RegulationList\ValueObject\RegulationListResponse\RegulationListResponse;
 
-final class Client
+final class Client implements ClientInterface
 {
     private const HEADER = 'BmHeader';
     private const PAY_HEADER = 'pay-bm';
