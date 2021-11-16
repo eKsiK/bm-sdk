@@ -21,7 +21,6 @@ use BlueMedia\HttpClient\ValueObject\Request;
 use BlueMedia\HttpClient\ValueObject\Response;
 use BlueMedia\Common\Builder\ServiceDtoBuilder;
 use BlueMedia\Common\Parser\ServiceResponseParser;
-use BlueMedia\Common\Util\EnvironmentRequirements;
 use BlueMedia\RegulationList\Dto\RegulationListDto;
 use BlueMedia\Transaction\Builder\TransactionDtoBuilder;
 use BlueMedia\Transaction\Parser\TransactionResponseParser;
