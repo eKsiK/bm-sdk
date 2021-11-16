@@ -51,8 +51,6 @@ final class Client implements ClientInterface
         string $hashSeparator = ClientEnum::HASH_SEPARATOR,
         HttpClientInterface $httpClient = null
     ) {
-        EnvironmentRequirements::checkPhpEnvironment();
-
         $this->configuration = new Configuration($serviceId, $sharedKey, $hashMode, $hashSeparator);
         $this->httpClient = $httpClient ?? new HttpClient();
     }
