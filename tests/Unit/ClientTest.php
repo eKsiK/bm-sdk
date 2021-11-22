@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Unit;
 
 use BlueMedia\Common\Enum\ClientEnum;
+use BlueMedia\Common\Exception\HashException;
 use BlueMedia\HttpClient\Builder;
 use BlueMedia\HttpClient\HttpClient;
 use BlueMedia\Transaction\ValueObject\Transaction;
@@ -151,6 +152,26 @@ final class ClientTest extends BaseTestCase
             ->doTransactionInit(TransactionFixtures\TransactionInit::getTransactionInit());
 
         $this->assertInstanceOf(TransactionInit::class, $result->getData());
+    }
+
+    public function testDoTransactionInitReturnsTransactionWithoutHash(): void
+    {
+        $client = $this->getHttpClient(static function (\Http\Mock\Client $mockClient): \Http\Mock\Client {
+            $mockClient->on(new RequestMatcher('/payment', 'pay-accept.bm.pl'), function (RequestInterface $request) {
+                return new \Nyholm\Psr7\Response(
+                    200,
+                    [],
+                    TransactionFixtures\TransactionInit::getTransactionInitResponseWithoutHash()
+                );
+            });
+
+            return $mockClient;
+        });
+
+        $this->expectException(HashException::class);
+
+        $client
+            ->doTransactionInit(TransactionFixtures\TransactionInit::getTransactionInit());
     }
 
     public function testDoItnInReturnsItnData(): void

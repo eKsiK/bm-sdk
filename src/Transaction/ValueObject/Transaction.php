@@ -243,7 +243,7 @@ class Transaction extends AbstractValueObject implements SerializableInterface, 
     /**
      * Transaction hash.
      *
-     * @var string
+     * @var string|null
      * @Type("string")
      */
     protected $hash;
@@ -285,7 +285,7 @@ class Transaction extends AbstractValueObject implements SerializableInterface, 
 
     public function getHash(): string
     {
-        return trim($this->hash);
+        return trim((string) $this->hash);
     }
 
     public function getReceiverNRB(): string

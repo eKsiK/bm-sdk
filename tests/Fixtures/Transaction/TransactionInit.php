@@ -47,4 +47,9 @@ abstract class TransactionInit
     {
         return file_get_contents(__DIR__.'/TransactionInitResponse.xml');
     }
+
+    public static function getTransactionInitResponseWithoutHash(): string
+    {
+        return file_get_contents(__DIR__.'/TransactionInitContinueResponseWithoutHash.xml');
+    }
 }
