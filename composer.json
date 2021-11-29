@@ -1,5 +1,5 @@
 {
-    "name": "bluemedia/php-sdk",
+    "name": "eksik/bluemedia-php-sdk",
     "description": "Blue Media PHP SDK",
     "license": "LGPL-3.0-only",
     "require": {
