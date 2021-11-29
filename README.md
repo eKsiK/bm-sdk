@@ -1,8 +1,6 @@
 ## BlueMedia PHP SDK
 
-Kod zawarty w tym repozytorium umożliwia wykonanie transakcji oraz innych usług oferowanych przez Blue Media S.A.
-
-Użycie SDK zalecane jest podczas implementacji własnych modułów płatności. Możesz je pobrać [tutaj](https://github.com/bluepayment-plugin/bm-sdk/archive/refs/heads/master.zip)
+Fork biblioteki [bluepayment-plugin/bm-sdk](https://github.com/bluepayment-plugin/bm-sdk)
 
 **Uwaga:** w wersji 1.0.0 możliwe jest wykonanie płatności oraz ITN z ograniczonym zestawem parametrów.
 
@@ -14,11 +12,14 @@ Użycie SDK zalecane jest podczas implementacji własnych modułów płatności.
   - iconv,
   - mbstring,
   - hash
+- Biblioteki, które implementują:
+  - [`psr/http-client-implementation`](https://packagist.org/providers/psr/http-client-implementation) PSR-18
+  - [`psr/http-factory-implementation`](https://packagist.org/providers/psr/http-factory-implementation) PSR-7
 
 
 ## Instalacja
 ``` bash
-$ composer require bluepayment-plugin/bm-sdk
+$ composer require eksik/bluemedia-php-sdk nyholm/psr7 symfony/http-client
 ```
 ## Konfiguracja klienta
 
@@ -39,7 +40,7 @@ $client = new BlueMedia\Client(
 ## Transakcja poprzez przekierowanie na paywall
 Najprostszym typem wykonania transakcji jest przekierowanie do serwisu BlueMedia wraz z danymi o transakcji. Obsługa płatności leży wtedy w całości po stronie serwisu BlueMedia.
 
-Aby wykonać transakcję należy wywołać metodę `getTransactionRedirect`, poprawne wykonanie metody zwróci formularz który wykona przekierowanie do serwisu BlueMedia:
+Aby wykonać transakcję, należy wywołać metodę `getTransactionRedirect`, poprawne wykonanie metody zwróci formularz który wykona przekierowanie do serwisu BlueMedia:
 
 ```php
 $result = $client->getTransactionRedirect([
@@ -83,7 +84,7 @@ Metoda `doTransactionInit` rozszerza standardowy model rozpoczęcia transakcji o
 - ukrycia danych wrażliwych parametrów linku transakcji – przedtransakcja odbywa się backendowo, a link do kontynuacji transakcji nie zawiera danych wrażliwych, a jedynie identyfikatory kontynuacji
 - użycia SDK w modelu pełnym (bezpiecznym)
 
-Metoda przyjmuje parametry takie jak w przypadku transakcji z przekierowaniem na paywall, z tą różnicą że wysyłany jest inny nagłówek, dzięki czemu serwis BlueMedia obsługuje żądanie w inny sposób.
+Metoda przyjmuje parametry takie jak w przypadku transakcji z przekierowaniem na paywall, z tą różnicą, że wysyłany jest inny nagłówek, dzięki czemu serwis BlueMedia obsługuje żądanie w inny sposób.
 W odpowiedzi otrzymywany jest link do kontynuacji transakcji lub odpowiedź informująca o braku kontynuacji oraz statusem płatności.
 
 ### Przedtransakcja, link do kontynuacji płatności
@@ -136,7 +137,7 @@ $transactionInit->toArray(); // [...]
 ## Szybki przelew
 Szybki Przelew to forma płatności, która wymaga od Klienta samodzielnego przepisania danych do przelewu dostarczanych przez System. Dane do przelewu można pozyskać dzięki metodzie `doTransactionBackground`.
 
-W zależności od kanału płatności jaki zostanie wybrany w kontekście transakcji, metoda zwróci dane do przelewu lub gotowy formularz.
+W zależności od kanału płatności, jaki zostanie wybrany w kontekście transakcji, metoda zwróci dane do przelewu lub gotowy formularz.
 
 Przykład wywołania (dane do transakcji):
 ```php
