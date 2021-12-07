@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Tests\Unit\Common\Util;
+namespace BlueMedia\Tests\Unit\Common\Util;
 
 use BlueMedia\Common\Exception\XmlException;
 use BlueMedia\Common\Util\XMLParser;
 use PHPUnit\Framework\TestCase;
-use Tests\Fixtures\Itn\Itn;
+use BlueMedia\Tests\Fixtures\Itn\Itn;
 
 class XMLParserTest extends TestCase
 {

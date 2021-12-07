@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Tests\Unit\Serializer;
+namespace BlueMedia\Tests\Unit\Serializer;
 
 use BlueMedia\Serializer\Serializer;
 use BlueMedia\Transaction\Dto\TransactionDto;
-use Tests\Unit\BaseTestCase;
+use BlueMedia\Tests\Unit\BaseTestCase;
 
 class SerializerTest extends BaseTestCase
 {
@@ -27,7 +27,7 @@ class SerializerTest extends BaseTestCase
         $this->serializer = new Serializer();
     }
 
-    public function testSerializeTransactionDataReturnsTransactionDto()
+    public function testSerializeTransactionDataReturnsTransactionDto(): void
     {
         $transactionDto = $this->serializer->serializeDataToDto($this->transactionData, TransactionDto::class);
 

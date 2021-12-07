@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Unit;
+namespace BlueMedia\Tests\Unit;
 
 use BlueMedia\Configuration;
 

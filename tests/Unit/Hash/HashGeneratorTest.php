@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Tests\Unit\Hash;
+namespace BlueMedia\Tests\Unit\Hash;
 
 use BlueMedia\Hash\HashGenerator;
-use Tests\Unit\BaseTestCase;
+use BlueMedia\Tests\Unit\BaseTestCase;
 
 class HashGeneratorTest extends BaseTestCase
 {

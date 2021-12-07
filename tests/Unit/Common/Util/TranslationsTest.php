@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Tests\Unit\Common\Util;
+namespace BlueMedia\Tests\Unit\Common\Util;
 
 use BlueMedia\Common\Exception\TranslationException;
 use BlueMedia\Common\Util\Translations;
-use Tests\Unit\BaseTestCase;
+use BlueMedia\Tests\Unit\BaseTestCase;
 
 class TranslationsTest extends BaseTestCase
 {

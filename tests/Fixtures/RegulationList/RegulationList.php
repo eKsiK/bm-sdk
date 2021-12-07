@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Fixtures\RegulationList;
+namespace BlueMedia\Tests\Fixtures\RegulationList;
 
 abstract class RegulationList
 {

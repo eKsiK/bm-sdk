@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Unit;
+namespace BlueMedia\Tests\Unit;
 
 use BlueMedia\Common\Enum\ClientEnum;
 use BlueMedia\Common\Exception\HashException;
@@ -11,10 +11,10 @@ use BlueMedia\HttpClient\HttpClient;
 use BlueMedia\Transaction\ValueObject\Transaction;
 use Http\Message\RequestMatcher\RequestMatcher;
 use Psr\Http\Message\RequestInterface;
-use Tests\Fixtures\Transaction as TransactionFixtures;
-use Tests\Fixtures\PaywayList as PaywayListFixtures;
-use Tests\Fixtures\RegulationList as RegulationListFixtures;
-use Tests\Fixtures\Itn as ItnFixtures;
+use BlueMedia\Tests\Fixtures\Transaction as TransactionFixtures;
+use BlueMedia\Tests\Fixtures\PaywayList as PaywayListFixtures;
+use BlueMedia\Tests\Fixtures\RegulationList as RegulationListFixtures;
+use BlueMedia\Tests\Fixtures\Itn as ItnFixtures;
 use BlueMedia\Client;
 use BlueMedia\Itn\ValueObject\Itn;
 use BlueMedia\HttpClient\ValueObject\Response;

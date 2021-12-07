@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Tests\Unit\Common\Parser;
+namespace BlueMedia\Tests\Unit\Common\Parser;
 
 use BlueMedia\Common\Exception\XmlException;
-use Tests\Unit\BaseTestCase;
+use BlueMedia\Tests\Unit\BaseTestCase;
 use BlueMedia\Common\Parser\ServiceResponseParser;
 
 class ServiceResponseParserTest extends BaseTestCase

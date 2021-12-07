@@ -2,7 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Tests\Fixtures\Itn;
+namespace BlueMedia\Tests\Fixtures\Itn;
+
+use SimpleXMLElement;
 
 abstract class Itn
 {
@@ -11,9 +13,9 @@ abstract class Itn
         return base64_encode(file_get_contents(__DIR__.'/ItnInRequest.xml'));
     }
 
-    public static function getTransactionXml(): \SimpleXMLElement
+    public static function getTransactionXml(): SimpleXMLElement
     {
-        $xml = new \SimpleXMLElement(file_get_contents(__DIR__.'/ItnInRequest.xml'));
+        $xml = new SimpleXMLElement(file_get_contents(__DIR__.'/ItnInRequest.xml'));
 
         return $xml->transactions->transaction;
     }
