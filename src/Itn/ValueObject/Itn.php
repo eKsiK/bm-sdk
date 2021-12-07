@@ -25,7 +25,7 @@ use BlueMedia\Serializer\SerializableInterface;
  *      "hash"
  * })
  */
-final class Itn extends AbstractValueObject implements SerializableInterface, HashableInterface
+class Itn extends AbstractValueObject implements SerializableInterface, HashableInterface
 {
     /**
      * Transaction service id.
