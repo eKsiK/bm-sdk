@@ -4,27 +4,27 @@ declare(strict_types=1);
 
 namespace BlueMedia\Tests\Unit;
 
+use BlueMedia\Client;
 use BlueMedia\Common\Enum\ClientEnum;
 use BlueMedia\Common\Exception\HashException;
 use BlueMedia\HttpClient\Builder;
 use BlueMedia\HttpClient\HttpClient;
-use BlueMedia\Itn\ValueObject\ItnResponse\CustomerData;
-use BlueMedia\Transaction\ValueObject\Transaction;
-use Http\Message\RequestMatcher\RequestMatcher;
-use Psr\Http\Message\RequestInterface;
-use BlueMedia\Tests\Fixtures\Transaction as TransactionFixtures;
+use BlueMedia\HttpClient\ValueObject\Response;
+use BlueMedia\Itn\ValueObject\Itn;
+use BlueMedia\Itn\ValueObject\ItnRequest\CustomerData;
+use BlueMedia\Itn\ValueObject\ItnResponse\ItnResponse;
+use BlueMedia\PaywayList\ValueObject\PaywayListResponse\PaywayListResponse;
+use BlueMedia\RegulationList\ValueObject\RegulationListResponse\RegulationListResponse;
+use BlueMedia\Tests\Fixtures\Itn as ItnFixtures;
 use BlueMedia\Tests\Fixtures\PaywayList as PaywayListFixtures;
 use BlueMedia\Tests\Fixtures\RegulationList as RegulationListFixtures;
-use BlueMedia\Tests\Fixtures\Itn as ItnFixtures;
-use BlueMedia\Client;
-use BlueMedia\Itn\ValueObject\Itn;
-use BlueMedia\HttpClient\ValueObject\Response;
-use BlueMedia\Itn\ValueObject\ItnResponse\ItnResponse;
-use BlueMedia\RegulationList\ValueObject\RegulationListResponse\RegulationListResponse;
-use BlueMedia\Transaction\ValueObject\TransactionInit;
-use BlueMedia\Transaction\ValueObject\TransactionContinue;
+use BlueMedia\Tests\Fixtures\Transaction as TransactionFixtures;
+use BlueMedia\Transaction\ValueObject\Transaction;
 use BlueMedia\Transaction\ValueObject\TransactionBackground;
-use BlueMedia\PaywayList\ValueObject\PaywayListResponse\PaywayListResponse;
+use BlueMedia\Transaction\ValueObject\TransactionContinue;
+use BlueMedia\Transaction\ValueObject\TransactionInit;
+use Http\Message\RequestMatcher\RequestMatcher;
+use Psr\Http\Message\RequestInterface;
 
 final class ClientTest extends BaseTestCase
 {

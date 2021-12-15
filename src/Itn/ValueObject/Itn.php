@@ -6,10 +6,10 @@ namespace BlueMedia\Itn\ValueObject;
 
 use BlueMedia\Common\ValueObject\AbstractValueObject;
 use BlueMedia\Common\ValueObject\HashableInterface;
-use BlueMedia\Itn\ValueObject\ItnResponse\CustomerData;
-use JMS\Serializer\Annotation\Type;
-use JMS\Serializer\Annotation\AccessorOrder;
+use BlueMedia\Itn\ValueObject\ItnRequest\CustomerData;
 use BlueMedia\Serializer\SerializableInterface;
+use JMS\Serializer\Annotation\AccessorOrder;
+use JMS\Serializer\Annotation\Type;
 
 /**
  * @AccessorOrder("custom",
@@ -103,7 +103,7 @@ class Itn extends AbstractValueObject implements SerializableInterface, Hashable
 
     /**
      * @var CustomerData|null
-     * @Type("BlueMedia\Itn\ValueObject\ItnResponse\CustomerData")
+     * @Type("BlueMedia\Itn\ValueObject\ItnRequest\CustomerData")
      */
     protected $customerData;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace BlueMedia\Itn\ValueObject\ItnResponse;
+namespace BlueMedia\Itn\ValueObject\ItnRequest;
 
 use BlueMedia\Serializer\SerializableInterface;
 use JMS\Serializer\Annotation\AccessorOrder;
