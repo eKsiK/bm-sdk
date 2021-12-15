@@ -23,6 +23,10 @@ use JMS\Serializer\Annotation\Type;
  *      "paymentDate",
  *      "paymentStatus",
  *      "paymentStatusDetails",
+ *      "invoiceNumber",
+ *      "customerNumber",
+ *      "customerEmail",
+ *      "addressIP",
  *      "customerData",
  *      "hash"
  * })
@@ -102,6 +106,30 @@ class Itn extends AbstractValueObject implements SerializableInterface, Hashable
     protected $paymentStatusDetails;
 
     /**
+     * @var string|null
+     * @Type("string")
+     */
+    private $invoiceNumber;
+
+    /**
+     * @var string|null
+     * @Type("string")
+     */
+    private $customerNumber;
+
+    /**
+     * @var string|null
+     * @Type("string")
+     */
+    private $customerEmail;
+
+    /**
+     * @var string|null
+     * @Type("string")
+     */
+    private $addressIP;
+
+    /**
      * @var CustomerData|null
      * @Type("BlueMedia\Itn\ValueObject\ItnRequest\CustomerData")
      */
@@ -172,6 +200,26 @@ class Itn extends AbstractValueObject implements SerializableInterface, Hashable
     public function getPaymentStatusDetails(): string
     {
         return $this->paymentStatusDetails;
+    }
+
+    public function getInvoiceNumber(): ?string
+    {
+        return $this->invoiceNumber;
+    }
+
+    public function getCustomerNumber(): ?string
+    {
+        return $this->customerNumber;
+    }
+
+    public function getCustomerEmail(): ?string
+    {
+        return $this->customerEmail;
+    }
+
+    public function getAddressIP(): ?string
+    {
+        return $this->addressIP;
     }
 
     public function getCustomerData(): ?CustomerData
