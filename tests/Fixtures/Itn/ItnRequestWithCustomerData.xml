@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<transactionList>
+    <serviceID>903545</serviceID>
+    <transactions>
+        <transaction>
+            <orderID>OT531023</orderID>
+            <remoteID>APUHUMSE4I</remoteID>
+            <amount>20.00</amount>
+            <currency>PLN</currency>
+            <gatewayID>106</gatewayID>
+            <paymentDate>20211215143130</paymentDate>
+            <paymentStatus>SUCCESS</paymentStatus>
+            <paymentStatusDetails>AUTHORIZED</paymentStatusDetails>
+            <customerData>
+                <fName>Jan</fName>
+                <lName>Kowalski</lName>
+                <streetName>Jasna</streetName>
+                <streetHouseNo>6</streetHouseNo>
+                <streetStaircaseNo>A</streetStaircaseNo>
+                <streetPremiseNo>3</streetPremiseNo>
+                <postalCode>10-234</postalCode>
+                <city>Warszawa</city>
+                <nrb>96109010301793218160815294</nrb>
+            </customerData>
+        </transaction>
+    </transactions>
+    <hash>b274871b61595ebed4367b03d662508c55e37d3f19f45806b5f865d65dae21e1</hash>
+</transactionList>

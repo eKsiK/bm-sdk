@@ -8,6 +8,7 @@ use BlueMedia\Common\Enum\ClientEnum;
 use BlueMedia\Common\Exception\HashException;
 use BlueMedia\HttpClient\Builder;
 use BlueMedia\HttpClient\HttpClient;
+use BlueMedia\Itn\ValueObject\ItnResponse\CustomerData;
 use BlueMedia\Transaction\ValueObject\Transaction;
 use Http\Message\RequestMatcher\RequestMatcher;
 use Psr\Http\Message\RequestInterface;
@@ -212,6 +213,14 @@ final class ClientTest extends BaseTestCase
         $this->assertXmlStringEqualsXmlString(ItnFixtures\Itn::getItnResponse(), $result->getData()->toXml());
     }
 
+    public function testDoItnResponseWithCustomerData(): void
+    {
+        $itnIn = $this->getHttpClient()->doItnIn(ItnFixtures\Itn::getItnRequestWithCustomerData());
+        $result = $this->getHttpClient()->doItnInResponse($itnIn->getData(), true);
+        $this->assertInstanceOf(ItnResponse::class, $result->getData());
+        $this->assertXmlStringEqualsXmlString(ItnFixtures\Itn::getItnResponseWithCustomerData(), $result->getData()->toXml());
+    }
+
     public function testGetPaywayList(): void
     {
         $client = $this->getHttpClient(static function (\Http\Mock\Client $mockClient): \Http\Mock\Client {
@@ -277,6 +286,32 @@ final class ClientTest extends BaseTestCase
         $this->assertSame($itnFixture['paymentDate'], $itn->getPaymentDate());
         $this->assertSame($itnFixture['paymentStatus'], $itn->getPaymentStatus());
         $this->assertSame($itnFixture['paymentStatusDetails'], $itn->getPaymentStatusDetails());
+    }
+
+    public function testGetItnObjectWithCustomerData(): void
+    {
+        $itn = $this->getHttpClient()::getItnObject(ItnFixtures\Itn::getItnRequestWithCustomerData());
+        $itnCustomerData = $itn->getCustomerData();
+
+        $itnFixture = (array) ItnFixtures\Itn::getTransactionXmlWithCustomerData();
+
+        $this->assertInstanceOf(CustomerData::class, $itnCustomerData);
+        $this->assertSame($itnFixture['remoteID'], $itn->getRemoteId());
+        $this->assertSame($itnFixture['amount'], $itn->getAmount());
+        $this->assertSame($itnFixture['currency'], $itn->getCurrency());
+        $this->assertSame($itnFixture['paymentDate'], $itn->getPaymentDate());
+        $this->assertSame($itnFixture['paymentStatus'], $itn->getPaymentStatus());
+        $this->assertSame($itnFixture['paymentStatusDetails'], $itn->getPaymentStatusDetails());
+        $this->assertSame((string) $itnFixture['customerData']->fName, $itnCustomerData->getFName());
+        $this->assertSame((string) $itnFixture['customerData']->lName, $itnCustomerData->getLName());
+        $this->assertSame((string) $itnFixture['customerData']->streetName, $itnCustomerData->getStreetName());
+        $this->assertSame((string) $itnFixture['customerData']->streetHouseNo, $itnCustomerData->getStreetHouseNo());
+        $this->assertSame((string) $itnFixture['customerData']->streetStaircaseNo, $itnCustomerData->getStreetStaircaseNo());
+        $this->assertSame((string) $itnFixture['customerData']->streetPremiseNo, $itnCustomerData->getStreetPremiseNo());
+        $this->assertSame((string) $itnFixture['customerData']->postalCode, $itnCustomerData->getPostalCode());
+        $this->assertSame((string) $itnFixture['customerData']->city, $itnCustomerData->getCity());
+        $this->assertSame((string) $itnFixture['customerData']->nrb, $itnCustomerData->getNrb());
+        $this->assertNull($itnCustomerData->getSenderData());
     }
 
     private function getHttpClient(callable $requestMatcher = null): Client

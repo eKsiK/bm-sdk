@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<confirmationList>
+    <serviceID><![CDATA[123456]]></serviceID>
+    <transactionsConfirmations>
+        <transactionConfirmed>
+            <orderID><![CDATA[OT531023]]></orderID>
+            <confirmation><![CDATA[CONFIRMED]]></confirmation>
+        </transactionConfirmed>
+    </transactionsConfirmations>
+    <hash><![CDATA[525a781e87dfc281c09103a8b8dfbd2b1603da891226ca7f221aafc5122e0ecd]]></hash>
+</confirmationList>

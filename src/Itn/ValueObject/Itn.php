@@ -6,6 +6,7 @@ namespace BlueMedia\Itn\ValueObject;
 
 use BlueMedia\Common\ValueObject\AbstractValueObject;
 use BlueMedia\Common\ValueObject\HashableInterface;
+use BlueMedia\Itn\ValueObject\ItnResponse\CustomerData;
 use JMS\Serializer\Annotation\Type;
 use JMS\Serializer\Annotation\AccessorOrder;
 use BlueMedia\Serializer\SerializableInterface;
@@ -22,6 +23,7 @@ use BlueMedia\Serializer\SerializableInterface;
  *      "paymentDate",
  *      "paymentStatus",
  *      "paymentStatusDetails",
+ *      "customerData",
  *      "hash"
  * })
  */
@@ -100,6 +102,12 @@ class Itn extends AbstractValueObject implements SerializableInterface, Hashable
     protected $paymentStatusDetails;
 
     /**
+     * @var CustomerData|null
+     * @Type("BlueMedia\Itn\ValueObject\ItnResponse\CustomerData")
+     */
+    protected $customerData;
+
+    /**
      * Itn hash.
      *
      * @var string
@@ -164,5 +172,10 @@ class Itn extends AbstractValueObject implements SerializableInterface, Hashable
     public function getPaymentStatusDetails(): string
     {
         return $this->paymentStatusDetails;
+    }
+
+    public function getCustomerData(): ?CustomerData
+    {
+        return $this->customerData;
     }
 }

@@ -29,4 +29,21 @@ abstract class Itn
     {
         return file_get_contents(__DIR__.'/ItnResponse.xml');
     }
+
+    public static function getItnRequestWithCustomerData(): string
+    {
+        return base64_encode(file_get_contents(__DIR__.'/ItnRequestWithCustomerData.xml'));
+    }
+
+    public static function getItnResponseWithCustomerData(): string
+    {
+        return file_get_contents(__DIR__.'/ItnResponseWithCustomerData.xml');
+    }
+
+    public static function getTransactionXmlWithCustomerData(): SimpleXMLElement
+    {
+        $xml = new SimpleXMLElement(file_get_contents(__DIR__.'/ItnRequestWithCustomerData.xml'));
+
+        return $xml->transactions->transaction;
+    }
 }
