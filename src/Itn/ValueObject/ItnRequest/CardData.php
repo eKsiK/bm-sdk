@@ -23,37 +23,37 @@ class CardData implements SerializableInterface
      * @var string|null
      * @Type("string")
      */
-    private $index;
+    protected $index;
 
     /**
      * @var string|null
      * @Type("string")
      */
-    private $validityYear;
+    protected $validityYear;
 
     /**
      * @var string|null
      * @Type("string")
      */
-    private $validityMonth;
+    protected $validityMonth;
 
     /**
      * @var string|null
      * @Type("string")
      */
-    private $issuer;
+    protected $issuer;
 
     /**
      * @var string|null
      * @Type("string")
      */
-    private $bin;
+    protected $bin;
 
     /**
      * @var string|null
      * @Type("string")
      */
-    private $mask;
+    protected $mask;
 
     public function getIndex(): ?string
     {

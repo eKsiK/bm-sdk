@@ -26,19 +26,19 @@ class ItnResponse implements SerializableInterface
      * @var string
      * @Type("string")
      */
-    private $serviceID;
+    protected $serviceID;
 
     /**
      * @var TransactionsConfirmations
      * @Type("BlueMedia\Itn\ValueObject\ItnResponse\TransactionsConfirmations")
      */
-    private $transactionsConfirmations;
+    protected $transactionsConfirmations;
 
     /**
      * @var string
      * @Type("string")
      */
-    private $hash;
+    protected $hash;
 
     public function getServiceID(): string
     {

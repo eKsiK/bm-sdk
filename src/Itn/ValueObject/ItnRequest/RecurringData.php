@@ -21,19 +21,19 @@ class RecurringData implements SerializableInterface
      * @var string|null
      * @Type("string")
      */
-    private $recurringAction;
+    protected $recurringAction;
 
     /**
      * @var string|null
      * @Type("string")
      */
-    private $clientHash;
+    protected $clientHash;
 
     /**
      * @var DateTime|null
      * @Type("DateTime<'YmdHis'>")
      */
-    private $expirationDate;
+    protected $expirationDate;
 
     public function getRecurringAction(): ?string
     {

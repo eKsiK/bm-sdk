@@ -109,25 +109,25 @@ class Itn extends AbstractValueObject implements SerializableInterface, Hashable
      * @var string|null
      * @Type("string")
      */
-    private $invoiceNumber;
+    protected $invoiceNumber;
 
     /**
      * @var string|null
      * @Type("string")
      */
-    private $customerNumber;
+    protected $customerNumber;
 
     /**
      * @var string|null
      * @Type("string")
      */
-    private $customerEmail;
+    protected $customerEmail;
 
     /**
      * @var string|null
      * @Type("string")
      */
-    private $addressIP;
+    protected $addressIP;
 
     /**
      * @var CustomerData|null

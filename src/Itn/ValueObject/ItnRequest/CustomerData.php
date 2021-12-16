@@ -27,52 +27,61 @@ class CustomerData implements SerializableInterface
      * @var string|null
      * @Type("string")
      */
-    private $fName;
+    protected $fName;
+
     /**
      * @var string|null
      * @Type("string")
      */
-    private $lName;
+    protected $lName;
+
     /**
      * @var string|null
      * @Type("string")
      */
-    private $streetName;
+    protected $streetName;
+
     /**
      * @var string|null
      * @Type("string")
      */
-    private $streetHouseNo;
+    protected $streetHouseNo;
+
     /**
      * @var string|null
      * @Type("string")
      */
-    private $streetStaircaseNo;
+    protected $streetStaircaseNo;
+
     /**
      * @var string|null
      * @Type("string")
      */
-    private $streetPremiseNo;
+    protected $streetPremiseNo;
+
     /**
      * @var string|null
      * @Type("string")
      */
-    private $postalCode;
+    protected $postalCode;
+
     /**
      * @var string|null
      * @Type("string")
      */
-    private $city;
+    protected $city;
+
     /**
      * @var string|null
      * @Type("string")
      */
-    private $nrb;
+    protected $nrb;
+
     /**
      * @var string|null
      * @Type("string")
      */
-    private $senderData;
+    protected $senderData;
 
     public function getFName(): ?string
     {
